@@ -1,0 +1,2 @@
+include ':app', ':biometric-auth'
+project(':biometric-auth').projectDir = new File('app/biometric-auth')
