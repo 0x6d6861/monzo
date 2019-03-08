@@ -1,3 +1,2 @@
-include ':app', ':datepicker-timeline', ':library'
-project(':datepicker-timeline').projectDir = new File('app/datepicker-timeline')
-project(':library').projectDir = new File('app/datepicker-timeline/library')
+include ':app', ':datetimeline'
+project(':datetimeline').projectDir = new File('app/datetimeline')
