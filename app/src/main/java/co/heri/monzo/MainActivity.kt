@@ -1,5 +1,6 @@
 package co.heri.monzo
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -101,6 +102,10 @@ class MainActivity : AppCompatActivity() {
 
 
         println(MPESAValues)
+
+        cal_btn.setOnClickListener {
+            startActivity(Intent(this@MainActivity, CalendarActivity::class.java))
+        }
 
 
         /*scan_btn.setOnClickListener {

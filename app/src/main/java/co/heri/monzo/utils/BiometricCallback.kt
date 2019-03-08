@@ -6,7 +6,6 @@ import android.os.Parcelable
 import android.widget.Toast
 import androidx.biometric.BiometricPrompt
 import co.heri.monzo.MainActivity
-import com.an.biometric.BiometricCallback
 
 
 class BiometricCallbackResponse(val context: Context) : BiometricPrompt.AuthenticationCallback() {

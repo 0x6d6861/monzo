@@ -1,2 +1,3 @@
-include ':app', ':biometric-auth'
-project(':biometric-auth').projectDir = new File('app/biometric-auth')
+include ':app', ':datepicker-timeline', ':library'
+project(':datepicker-timeline').projectDir = new File('app/datepicker-timeline')
+project(':library').projectDir = new File('app/datepicker-timeline/library')
