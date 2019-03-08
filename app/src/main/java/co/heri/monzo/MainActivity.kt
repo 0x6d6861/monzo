@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mTopToolbar: Toolbar
 
-    val executor = Executors.newSingleThreadExecutor()
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -54,30 +53,7 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-        val sampleString = StringBuilder()
 
-        sampleString.append("Login to your account ");
-
-        val account_text = "agape@live.fr"
-
-        sampleString.append(account_text);
-
-        val spannableString = SpannableString(sampleString.toString())
-
-        spannableString.setSpan(StyleSpan(Typeface.BOLD),sampleString.length - account_text.length,sampleString.length,0);
-
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Authentication")
-            .setSubtitle(spannableString)
-            .setDescription("Place your finger on the device home button to verify your identity")
-            .setNegativeButtonText("Cancel")
-            .build()
-
-        val biometricPrompt = BiometricPrompt(this@MainActivity, executor, BiometricCallbackResponse(this@MainActivity))
-
-        scan_btn.setOnClickListener {
-            biometricPrompt.authenticate(promptInfo)
-        }
 
         val mpesaParser = MpesaParser();
 

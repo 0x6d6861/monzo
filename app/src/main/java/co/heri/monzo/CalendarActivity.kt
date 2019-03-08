@@ -7,8 +7,6 @@ import java.util.*
 import com.github.badoualy.datepicker.MonthView
 
 
-
-
 class CalendarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
