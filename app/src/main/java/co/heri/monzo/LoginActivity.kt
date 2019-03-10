@@ -42,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
 
         val biometricPrompt = BiometricPrompt(this@LoginActivity, executor, BiometricCallbackResponse(this@LoginActivity))
 
+        biometricPrompt.authenticate(promptInfo) // prompts the dialog by default
+
         fingerprint_btn.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
         }

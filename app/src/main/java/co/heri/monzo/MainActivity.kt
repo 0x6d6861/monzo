@@ -21,6 +21,8 @@ import com.androidstudy.daraja.model.AccessToken
 import com.androidstudy.daraja.DarajaListener
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
+import android.view.Menu
+import android.view.MenuItem
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         mTopToolbar = findViewById<Toolbar>(R.id.toolbar);
         setSupportActionBar(mTopToolbar);
+
+        supportActionBar!!.setDisplayShowTitleEnabled(false);
+
 
         daraja =
             Daraja.with("UtktAROGXjf63QT5wT7yokvJ3K2xGSoY", "OGIb0ruJ8q8r1uXL", object : DarajaListener<AccessToken> {
@@ -142,7 +147,26 @@ class MainActivity : AppCompatActivity() {
         }*/
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        val id = item.itemId
+
+
+        if (id == R.id.notification_menu) {
+            Toast.makeText(this@MainActivity, "Action clicked", Toast.LENGTH_LONG).show()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
 
 
 }
