@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 import android.view.Menu
 import android.view.MenuItem
+import co.heri.monzo.dialods.RequestDialog
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mTopToolbar);
 
         supportActionBar!!.setDisplayShowTitleEnabled(false);
+
+        request_dialog_btn.setOnClickListener {
+            this@MainActivity.openRequestDialod()
+        }
 
 
         daraja =
@@ -85,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         println(MPESAValues)
 
         cal_btn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, CalendarActivity::class.java))
+            startActivity(Intent(this@MainActivity, TransactionActivity::class.java))
         }
 
 
@@ -166,6 +171,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun openRequestDialod(){
+        RequestDialog.display(supportFragmentManager)
     }
 
 

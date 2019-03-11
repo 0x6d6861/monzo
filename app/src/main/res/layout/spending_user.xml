@@ -3,10 +3,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white">
+>
 
     <TextView
-            android:text=".85"
+            android:text="602"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView18"
             app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content" android:id="@+id/textView17"
             app:layout_constraintTop_toTopOf="@+id/textView16"
             android:textColor="@color/more_money"
-            android:textSize="30sp"
+            android:textSize="28sp"
             app:layout_constraintEnd_toStartOf="@+id/textView18" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView19"/>
     <com.makeramen.roundedimageview.RoundedImageView
@@ -33,7 +33,7 @@
             app:riv_oval="true"
             android:id="@+id/imageView4" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/martin"/>
     <TextView

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+      tools:context="co.heri.monzo.TransactionActivity">
+    <item android:id="@+id/action_all"
+          android:title="All"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_sent"
+          android:title="Received"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_received"
+          android:title="Sent"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+</menu>
