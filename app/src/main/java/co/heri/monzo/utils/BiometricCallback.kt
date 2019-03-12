@@ -28,7 +28,11 @@ class BiometricCallbackResponse(val context: Context) : BiometricPrompt.Authenti
     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
         super.onAuthenticationSucceeded(result)
         // "Called when a biometric is recognized."
-        context.startActivity(Intent(context, MainActivity::class.java))
+
+        if(Preferences.setToken(context)){
+            context.startActivity(Intent(context, MainActivity::class.java))
+        }
+
     }
 
     override fun onAuthenticationFailed() {

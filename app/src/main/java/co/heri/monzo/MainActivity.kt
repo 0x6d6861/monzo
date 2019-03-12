@@ -1,7 +1,9 @@
 package co.heri.monzo
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,15 +25,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.annotation.DrawableRes
+import androidx.appcompat.app.ActionBar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import co.heri.monzo.dialods.RequestDialog
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
 
     lateinit var daraja: Daraja;
     lateinit var phoneNumber: String;
 
     private lateinit var mTopToolbar: Toolbar
+
+    private lateinit var drawerLayout: DrawerLayout
+
 
 
 
@@ -43,7 +53,18 @@ class MainActivity : AppCompatActivity() {
         mTopToolbar = findViewById<Toolbar>(R.id.toolbar);
         setSupportActionBar(mTopToolbar);
 
-        supportActionBar!!.setDisplayShowTitleEnabled(false);
+        val actionbar: ActionBar? = supportActionBar
+
+        actionbar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
+        }
+
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+
+        drawerLayout.addDrawerListener(this@MainActivity)
+
 
         request_dialog_btn.setOnClickListener {
             this@MainActivity.openRequestDialod()
@@ -158,24 +179,47 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-
-        if (id == R.id.notification_menu) {
-            Toast.makeText(this@MainActivity, "Action clicked", Toast.LENGTH_LONG).show()
-            return true
+        return when (item.itemId) {
+            android.R.id.home -> {
+                drawerLayout.openDrawer(GravityCompat.START)
+                true
+            }
+            R.id.notification_menu -> {
+                Toast.makeText(this@MainActivity, "Action clicked", Toast.LENGTH_LONG).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-
-        return super.onOptionsItemSelected(item)
     }
+
 
     fun openRequestDialod(){
         RequestDialog.display(supportFragmentManager)
     }
 
+    fun OpenDrawer(view: View) {
+        drawerLayout.openDrawer(GravityCompat.START)
+    }
+
+
+    // DRAWER EVENTS ARE HERE
+    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+        // Respond when the drawer's position changes
+    }
+
+    override fun onDrawerOpened(drawerView: View) {
+        // Respond when the drawer is opened
+    }
+
+    override fun onDrawerClosed(drawerView: View) {
+        // Respond when the drawer is closed
+    }
+
+    override fun onDrawerStateChanged(newState: Int) {
+        // Respond when the drawer motion state changes
+    }
+    // DRAWER EVENTS ARE HERE
 
 }

@@ -12,7 +12,22 @@
         <item name="android:fontFamily">@font/nunito</item>
 
         <item name="android:overScrollMode">never</item>
+
+        <item name="controlBackground">?selectableItemBackgroundBorderless</item>
+
     </style>
+
+    <style name="SidebarItemSimpleTextStyle">
+        <item name="android:textSize">20sp</item>
+        <!--<item name="android:textColor">@color/colorPrimary</item>-->
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:fontFamily">@font/gotham_book</item>-->
+        <item name="android:layout_marginStart">28dp</item>
+        <item name="android:layout_marginEnd">8.0dip</item>
+    </style>
+
 
     <style name="AppTheme.FullScreenDialog" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
