@@ -26,11 +26,14 @@ import java.util.concurrent.Executors
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import co.heri.monzo.dialods.RequestDialog
+import kotlinx.android.synthetic.main.request_money_dialog.*
+import kotlinx.android.synthetic.main.request_money_dialog.view.*
 
 
 class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
 
 
         request_dialog_btn.setOnClickListener {
-            this@MainActivity.openRequestDialod()
+            this@MainActivity.openRequestDialog()
         }
 
 
@@ -195,8 +198,9 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
     }
 
 
-    fun openRequestDialod(){
-        RequestDialog.display(supportFragmentManager)
+    private lateinit var request_dialog: RequestDialog
+    private fun openRequestDialog(){
+       request_dialog =  RequestDialog.display(supportFragmentManager)
     }
 
     fun OpenDrawer(view: View) {
@@ -221,5 +225,10 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
         // Respond when the drawer motion state changes
     }
     // DRAWER EVENTS ARE HERE
+
+
+fun setNumber(view: View){
+    request_dialog.setNumber(view);
+}
 
 }
