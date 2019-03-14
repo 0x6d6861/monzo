@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
 
         var MPESAValues = mutableListOf<MpesaMessage>()
 
-        SMS.getSmsConversation(this, "MPESA"){ conversations ->
+        /*SMS.getSmsConversation(this, "MPESA"){ conversations ->
             conversations?.forEach { conversation ->
 
                 conversation.message.forEach {
@@ -105,10 +105,10 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
                // println("Messages: ${conversation.message.toString()}")
             }
         }
+*/
 
 
-
-        println(MPESAValues)
+        //println(MPESAValues)
 
         cal_btn.setOnClickListener {
             startActivity(Intent(this@MainActivity, TransactionActivity::class.java))

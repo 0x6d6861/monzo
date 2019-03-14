@@ -1,6 +1,7 @@
 package co.heri.monzo
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -52,6 +53,10 @@ class LoginActivity : AppCompatActivity() {
 
         fingerprint_btn.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
+        }
+
+        proceed_btn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }
