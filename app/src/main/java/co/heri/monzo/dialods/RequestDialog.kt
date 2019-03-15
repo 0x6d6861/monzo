@@ -4,18 +4,24 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import co.heri.monzo.R
 import kotlinx.android.synthetic.main.request_money_dialog.*
+import kotlinx.android.synthetic.main.request_money_dialog.view.*
+import java.text.NumberFormat
+import java.util.*
 
 
 class RequestDialog : DialogFragment() {
 
 
     private var toolbar: Toolbar? = null
+
+    val nf = NumberFormat.getIntegerInstance(Locale.US)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +47,11 @@ class RequestDialog : DialogFragment() {
 
         toolbar = view.findViewById(R.id.toolbar)
 
+        (view.findViewById<ImageView>(R.id.backspace_btn)).setOnLongClickListener {
+            (view.findViewById<TextView>(R.id.amount_txt)).text = "0";
+            true
+        }
+
         return view
     }
 
@@ -57,9 +68,11 @@ class RequestDialog : DialogFragment() {
 
 
     fun setNumber(view: View){
-        var tag = resources.getResourceEntryName(view.id)
 
-        var text = amount_txt.text.toString()
+
+        val tag = resources.getResourceEntryName(view.id)
+
+        val text = amount_txt.text.toString().trim().replace(",", "")
 
         var new_number = "0";
 
@@ -76,7 +89,7 @@ class RequestDialog : DialogFragment() {
             val extracted_numbers: List<String>? = tag.split("_")
 
             if (extracted_numbers != null) {
-                if(text.toInt() == 0){
+                if(text.toBigInteger() == 0.toBigInteger()){
                     if(extracted_numbers.last().toInt() != 0){
                         new_number = extracted_numbers.last()
                     }
@@ -88,7 +101,8 @@ class RequestDialog : DialogFragment() {
             }
         }
 
-        amount_txt.text = new_number;
+
+        amount_txt.text = nf.format(new_number.toBigInteger())
 
     }
 
@@ -104,4 +118,5 @@ class RequestDialog : DialogFragment() {
             return dialog
         }
     }
+
 }

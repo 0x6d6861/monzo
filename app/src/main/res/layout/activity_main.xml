@@ -6,7 +6,7 @@
                                            android:id="@+id/drawer_layout"
                                            android:layout_width="match_parent"
                                            android:layout_height="match_parent"
-                                           tools:openDrawer="start" tools:context=".MainActivity">
+                                           tools:context=".MainActivity">
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -94,7 +94,7 @@
                                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                                 android:layout_marginStart="16dp" android:textSize="14sp"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:fontFamily="sans-serif-medium"/>
+                        />
                         <TextView
                                 android:text="50, 670"
                                 android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/textView25"
                                 app:layout_constraintTop_toBottomOf="@+id/textView25"
                                 android:textColor="@color/colorPrimaryDark" android:textSize="56sp"
-                                android:fontFamily="sans-serif-light"/>
+                                android:fontFamily="@font/montserrat_light"/>
                         <TextView
                                 android:text="Available"
                                 android:layout_width="wrap_content"
@@ -116,7 +116,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" android:id="@+id/textView32"
                                 app:layout_constraintStart_toEndOf="@+id/balance_txt" android:layout_marginStart="8dp"
-                                app:layout_constraintTop_toTopOf="@+id/balance_txt" android:fontFamily="sans-serif"
+                                app:layout_constraintTop_toTopOf="@+id/balance_txt"
+                                android:fontFamily="@font/montserrat_medium"
                                 android:textColor="@color/colorPrimaryDark"
                                 app:layout_constraintBottom_toBottomOf="@+id/balance_txt"/>
                         <ImageView
@@ -163,12 +164,13 @@
                             android:text="Your Activities"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" android:id="@+id/textView34"
-                            android:textColor="@color/colorPrimary" android:textStyle="bold"
                             android:layout_alignParentStart="true" android:layout_marginTop="32dp"
                             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginStart="16dp" android:textSize="20sp"/>
+                            android:layout_marginStart="16dp"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textColor="@color/colorPrimary" android:textStyle="bold"/>
                     <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_arrow_forward_black_24dp"
@@ -202,12 +204,13 @@
                             android:text="Get the most out of your Monzo "
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" android:id="@+id/textView35"
-                            android:textColor="@color/colorPrimary" android:textStyle="bold"
                             android:layout_alignParentStart="true" android:layout_marginTop="32dp"
                             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginStart="16dp" android:textSize="20sp"/>
+                            android:layout_marginStart="16dp"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textColor="@color/colorPrimary" android:textStyle="bold"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.card.MaterialCardView android:layout_width="260dp"
@@ -258,10 +261,9 @@
             android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
             app:itemTextAppearance="@style/SidebarItemSimpleTextStyle"
             android:fitsSystemWindows="true" android:overScrollMode="never" app:headerLayout="@layout/header_nav"
-            app:menu="@menu/drawer_menu">
+            app:menu="@menu/drawer_menu" android:layout_gravity="start">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
