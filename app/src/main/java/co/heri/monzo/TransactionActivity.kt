@@ -1,5 +1,6 @@
 package co.heri.monzo
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -7,7 +8,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
-import co.heri.monzo.dialods.RequestDialog
 import co.heri.monzo.fragments.transactions.AllTrasactionFragment
 import co.heri.monzo.fragments.transactions.ReceivedTransactionFragment
 import co.heri.monzo.fragments.transactions.SentTransactionFragment
@@ -16,7 +16,18 @@ import com.google.android.material.tabs.TabLayout
 
 
 
-class TransactionActivity : AppCompatActivity() {
+
+
+
+
+
+class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmentInteractionListener {
+
+
+    override fun onFragmentInteraction(uri: Uri) {
+
+        Toast.makeText(this@TransactionActivity, "Button clicked from fragment", Toast.LENGTH_SHORT).show()
+    }
 
     private lateinit var mTopToolbar: Toolbar
 
@@ -38,6 +49,8 @@ class TransactionActivity : AppCompatActivity() {
 
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+
 
     }
 

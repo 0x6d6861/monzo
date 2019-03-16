@@ -1,6 +1,7 @@
 package co.heri.monzo.fragments.transactions
 
 import android.content.Context
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 import co.heri.monzo.R
+import co.heri.monzo.utils.PieChartView
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,8 +32,22 @@ class AllTrasactionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val view = inflater.inflate(R.layout.fragment_all_trasaction, container, false)
+
+        val pieChart = view.findViewById<PieChartView>(R.id.pieChart) as PieChartView
+
+        pieChart.setCenterColor(android.R.color.white)
+        pieChart.setDataPoints(floatArrayOf(450F, 1230F, 200F, 400F))
+        pieChart.setSliceColor(intArrayOf(
+            Color.rgb(0,85,103),
+            Color.rgb(109,83,231),
+            Color.rgb(0,116,238),
+            Color.rgb(29,150,87)))
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_trasaction, container, false)
+        return view
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -42,6 +59,7 @@ class AllTrasactionFragment : Fragment() {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
             listener = context
+
         } else {
            // throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
