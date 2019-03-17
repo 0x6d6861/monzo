@@ -2,9 +2,6 @@ package co.heri.monzo.utils
 
 import android.app.Activity
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
-import java.sql.Date
 import java.sql.Timestamp
 
 

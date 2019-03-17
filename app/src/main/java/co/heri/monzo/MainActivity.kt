@@ -1,39 +1,26 @@
 package co.heri.monzo
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.style.StyleSpan
 import android.util.Log
 import com.androidstudy.daraja.Daraja
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
-import androidx.biometric.BiometricPrompt
-import co.heri.monzo.utils.BiometricCallbackResponse
 import co.heri.monzo.utils.sms.MpesaMessage
 import co.heri.monzo.utils.sms.MpesaParser
-import co.heri.monzo.utils.sms.SMS
 import com.androidstudy.daraja.model.AccessToken
 import com.androidstudy.daraja.DarajaListener
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.concurrent.Executors
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.TextView
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import co.heri.monzo.dialods.RequestDialog
-import kotlinx.android.synthetic.main.request_money_dialog.*
-import kotlinx.android.synthetic.main.request_money_dialog.view.*
 
 
 class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
