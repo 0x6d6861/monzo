@@ -21,6 +21,10 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import co.heri.monzo.dialods.RequestDialog
+import com.google.android.gms.common.api.CommonStatusCodes
+import com.google.android.gms.vision.barcode.Barcode
+import android.app.Activity
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
@@ -31,6 +35,7 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
     private lateinit var mTopToolbar: Toolbar
 
     private lateinit var drawerLayout: DrawerLayout
+
 
 
 
@@ -74,6 +79,10 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
                 }
             })
 
+        scan_btn.setOnClickListener {
+
+
+        }
 
 
         val mpesaParser = MpesaParser();
@@ -99,6 +108,10 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
 
 
         //println(MPESAValues)
+
+        scan_btn.setOnClickListener {
+            startActivityForResult(Intent(this@MainActivity, ScanActivity::class.java), 1)
+        }
 
         cal_btn.setOnClickListener {
             startActivity(Intent(this@MainActivity, TransactionActivity::class.java))
@@ -217,5 +230,20 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
 fun setNumber(view: View){
     request_dialog.setNumber(view);
 }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                val result = data!!.getStringExtra("result")
+
+                Snackbar.make(scan_btn, result, Snackbar.LENGTH_SHORT).show()
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }
 
 }
