@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
@@ -13,12 +14,8 @@ import co.heri.monzo.fragments.transactions.ReceivedTransactionFragment
 import co.heri.monzo.fragments.transactions.SentTransactionFragment
 import co.heri.monzo.utils.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
-
-
-
-
-
-
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.activity_transaction.*
 
 
 class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmentInteractionListener {
@@ -33,6 +30,8 @@ class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmen
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager
+
+    private lateinit var sheetBehavior: BottomSheetBehavior<View>;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +48,15 @@ class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmen
 
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+
+        sheetBehavior = BottomSheetBehavior.from(filter_bottom_sheet);
+
+        sheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN;
+
+        toggle_filter.setOnClickListener {
+            toggleFilterSheet();
+        }
 
 
 
@@ -69,7 +77,7 @@ class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmen
 
 
         if (id == R.id.transaction_filter_menu) {
-            Toast.makeText(this@TransactionActivity, "Action clicked", Toast.LENGTH_LONG).show()
+            toggleFilterSheet()
             return true
         }
 
@@ -83,6 +91,15 @@ class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmen
         adapter.addFragment(ReceivedTransactionFragment(), "Received")
         adapter.addFragment(SentTransactionFragment(), "Sent")
         viewPager.adapter = adapter
+    }
+
+
+    private fun toggleFilterSheet(){
+        if (sheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        } else {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }
     }
 
 

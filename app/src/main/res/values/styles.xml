@@ -16,7 +16,7 @@
         <item name="controlBackground">?selectableItemBackgroundBorderless</item>
 
 
-        <item name="android:navigationBarColor">#14233C</item>
+        <!--<item name="android:navigationBarColor">#14233C</item>-->
 
     </style>
 
