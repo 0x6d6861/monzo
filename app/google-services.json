@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1036771643891",
+    "firebase_url": "https://finance-app-backend.firebaseio.com",
+    "project_id": "finance-app-backend",
+    "storage_bucket": "finance-app-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036771643891:android:b50ce9c9596bdf8c",
+        "android_client_info": {
+          "package_name": "co.heri.monzo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3jJQoHdfdFV597O4xMbbg9kRfdcmW2aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036771643891-mragvufavgt2fb04oita77h2og7d2srs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

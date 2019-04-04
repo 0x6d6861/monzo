@@ -24,6 +24,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.0.0'
@@ -38,8 +39,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
-    implementation 'androidx.biometric:biometric:1.0.0-alpha03'
+    implementation 'androidx.biometric:biometric:1.0.0-alpha04'
     implementation project(':datetimeline')
-    implementation 'com.google.android.gms:play-services-vision:11.4.0'
+    implementation 'com.google.android.gms:play-services-vision:17.0.2'
     implementation project(':barcode-reader')
 }
+
+apply plugin: 'com.google.gms.google-services'
