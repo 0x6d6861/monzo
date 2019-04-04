@@ -1,6 +1,5 @@
-package co.heri.monzo
+package co.heri.monzo.Authentication
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -8,12 +7,13 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.StyleSpan
 import androidx.biometric.BiometricPrompt
-import androidx.fragment.app.DialogFragment
+import co.heri.monzo.MainActivity
+import co.heri.monzo.R
 import co.heri.monzo.utils.BiometricCallbackResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.concurrent.Executors
 
-class LoginActivity : AppCompatActivity() {
+class UnlockActivity : AppCompatActivity() {
 
 
     val executor = Executors.newSingleThreadExecutor()
@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
 
-        val biometricPrompt = BiometricPrompt(this@LoginActivity, executor, BiometricCallbackResponse(this@LoginActivity))
+        val biometricPrompt = BiometricPrompt(this@UnlockActivity, executor, BiometricCallbackResponse(this@UnlockActivity))
 
 
         biometricPrompt.authenticate(promptInfo) // prompts the dialog by default

@@ -3,6 +3,8 @@ package co.heri.monzo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import co.heri.monzo.Authentication.SplashScreenActivity
+import co.heri.monzo.Authentication.UnlockActivity
 import co.heri.monzo.utils.Preferences
 
 
@@ -13,11 +15,14 @@ class EmptyMainActivity : AppCompatActivity() {
 
         val activityIntent: Intent
 
+
         // go straight to main if a token is stored
         if (Preferences.getToken(this@EmptyMainActivity) != null) {
+            // TODO: if it the first run, start the splash screen
             activityIntent = Intent(this, MainActivity::class.java)
         } else {
-            activityIntent = Intent(this, LoginActivity::class.java)
+//            activityIntent = Intent(this, UnlockActivity::class.java)
+            activityIntent = Intent(this, SplashScreenActivity::class.java)
         }
 
         startActivity(activityIntent)

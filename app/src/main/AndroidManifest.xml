@@ -12,11 +12,11 @@
             android:name="android.hardware.camera"
             android:required="true"/>
 
-    <supports-screens android:largeScreens="true"
-                      android:normalScreens="true"
-                      android:smallScreens="true" android:xlargeScreens="true"/>
-
-
+    <supports-screens
+            android:largeScreens="true"
+            android:normalScreens="true"
+            android:smallScreens="true"
+            android:xlargeScreens="true"/>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -27,9 +27,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ScanActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name=".Authentication.SplashScreenActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>-->
+        </activity>
+        <activity
+                android:name=".ScanActivity"
+                android:screenOrientation="portrait">
         </activity>
 
         <meta-data
@@ -50,7 +57,7 @@
                 android:label="@string/title_activity_transaction"
                 android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Authentication.UnlockActivity">
         </activity>
         <activity android:name=".CalendarActivity">
         </activity>
