@@ -10,7 +10,7 @@ import androidx.biometric.BiometricPrompt
 import co.heri.monzo.MainActivity
 import co.heri.monzo.R
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_login.view.*
+import kotlinx.android.synthetic.main.activity_unlock.view.*
 
 
 class BiometricCallbackResponse(val context: Context) : BiometricPrompt.AuthenticationCallback() {

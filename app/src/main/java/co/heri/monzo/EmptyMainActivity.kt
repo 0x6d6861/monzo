@@ -19,7 +19,7 @@ class EmptyMainActivity : AppCompatActivity() {
         // go straight to main if a token is stored
         if (Preferences.getToken(this@EmptyMainActivity) != null) {
             // TODO: if it the first run, start the splash screen
-            activityIntent = Intent(this, MainActivity::class.java)
+            activityIntent = Intent(this, UnlockActivity::class.java)
         } else {
 //            activityIntent = Intent(this, UnlockActivity::class.java)
             activityIntent = Intent(this, SplashScreenActivity::class.java)

@@ -15,9 +15,19 @@
 
         <item name="controlBackground">?selectableItemBackgroundBorderless</item>
 
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+
+
 
         <!--<item name="android:navigationBarColor">#14233C</item>-->
 
+    </style>
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_slide_out_right</item>
     </style>
 
     <style name="SidebarItemSimpleTextStyle">

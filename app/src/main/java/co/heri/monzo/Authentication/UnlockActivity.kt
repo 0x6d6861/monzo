@@ -10,7 +10,7 @@ import androidx.biometric.BiometricPrompt
 import co.heri.monzo.MainActivity
 import co.heri.monzo.R
 import co.heri.monzo.utils.BiometricCallbackResponse
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_unlock.*
 import java.util.concurrent.Executors
 
 class UnlockActivity : AppCompatActivity() {
@@ -22,7 +22,7 @@ class UnlockActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_unlock)
 
 
 

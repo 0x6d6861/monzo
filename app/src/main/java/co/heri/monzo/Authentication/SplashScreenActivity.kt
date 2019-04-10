@@ -25,7 +25,11 @@ class SplashScreenActivity : AppCompatActivity() {
         viewPager.adapter = SplashPagerAdapter(this)
 
         login_btn.setOnClickListener {
-            startActivity(Intent(this, UnlockActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        register_btn.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
