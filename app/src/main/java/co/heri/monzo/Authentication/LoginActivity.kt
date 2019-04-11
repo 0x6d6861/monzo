@@ -20,9 +20,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         login_btn.setOnClickListener {
-//            startActivity(Intent(this, UnlockActivity::class.java))
+            startActivity(Intent(this, UnlockActivity::class.java))
 
-            startModal()
+//            startModal()
 
         }
 

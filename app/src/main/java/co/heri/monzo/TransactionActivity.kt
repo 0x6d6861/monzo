@@ -16,10 +16,16 @@ import co.heri.monzo.utils.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_transaction.*
+import android.widget.DatePicker
+import android.app.DatePickerDialog
+import android.widget.EditText
+import java.text.DateFormat
+import java.util.*
 
 
 class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmentInteractionListener {
 
+    var mCalendar = Calendar.getInstance()
 
     override fun onFragmentInteraction(uri: Uri) {
 
@@ -100,6 +106,24 @@ class TransactionActivity : AppCompatActivity(), AllTrasactionFragment.OnFragmen
         } else {
             sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         }
+    }
+
+
+    public fun setDate(viewElement: View){
+
+        val datePickerDialog = DatePickerDialog(this,
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                mCalendar.set(Calendar.YEAR, year)
+                mCalendar.set(Calendar.MONTH, monthOfYear)
+                mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                val date = DateFormat.getDateInstance(DateFormat.MEDIUM).format(mCalendar.getTime())
+                (viewElement as EditText).setText(date)
+
+            }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+
     }
 
 
