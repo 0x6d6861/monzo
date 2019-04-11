@@ -31,19 +31,33 @@
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout9"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar" android:layout_gravity="center"
                 android:layout_marginTop="16dp" android:layout_marginBottom="48dp"/>
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+                app:hintEnabled="false"
+                android:layout_margin="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:id="@+id/email_txt" android:background="@drawable/rounded_corner" android:layout_margin="8dp"
-                android:inputType="textEmailAddress" android:hint="Email Address"/>
-        <EditText
+                android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/email_txt" android:background="@drawable/rounded_corner"
+                    android:inputType="textEmailAddress" android:hint="Email Address"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                app:hintEnabled="false"
+                android:layout_margin="8dp"
+                app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/password_txt" android:background="@drawable/rounded_corner"
-                android:layout_margin="8dp" android:hint="Password"/>
+                android:layout_height="wrap_content" app:passwordToggleTint="#A6ABB8">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/password_txt" android:background="@drawable/rounded_corner"
+                    android:hint="Password"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.button.MaterialButton
                 android:text="Login"
                 android:layout_width="match_parent"

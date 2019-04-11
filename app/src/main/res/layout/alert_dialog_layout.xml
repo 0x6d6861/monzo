@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_margin="16dp">
+        <TextView
+                android:text="Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/modal_title" android:layout_margin="8dp"
+                android:textAlignment="center" android:textSize="18sp" android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/colorAccent"/>
+        <TextView
+                android:text="This is where the message of the modal comes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/modal_message" android:layout_margin="8dp"
+                android:textAlignment="center" android:textSize="16sp"/>
+        <Button
+                android:text="Confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/modal_comfirm_btn" android:layout_gravity="center"
+                android:textAllCaps="false" android:layout_margin="8dp"/>
+        <Button
+                android:text="Dismiss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/modal_dismiss_btn" android:layout_gravity="center"
+                android:textAllCaps="false" style="?attr/borderlessButtonStyle" android:layout_margin="8dp"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

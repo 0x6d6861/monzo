@@ -15,7 +15,7 @@
 
         <item name="controlBackground">?selectableItemBackgroundBorderless</item>
 
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <!--<item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>-->
 
 
 
