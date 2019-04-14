@@ -46,8 +46,11 @@ class LoginActivity : AppCompatActivity() {
 
                 mAuth.signInWithEmailAndPassword(accountEmail, accountPassword).addOnCompleteListener {
                     if(it.isSuccessful){
-                        startActivity(Intent(this, MainActivity::class.java))
+                        var intent =  Intent(this, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
                         Toast.makeText(this, "Welcome back " + mAuth.currentUser!!.displayName, Toast.LENGTH_SHORT).show()
+                        finish()
                     } else {
                         password_input.error = "Invalid login details provided"
                         Toast.makeText(this, "Login faild, try again", Toast.LENGTH_SHORT).show()

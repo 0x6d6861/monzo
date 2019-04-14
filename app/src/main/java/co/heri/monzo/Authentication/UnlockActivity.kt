@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_unlock.*
 import java.util.concurrent.Executors
 
+
+
 class UnlockActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
@@ -35,7 +37,9 @@ class UnlockActivity : AppCompatActivity() {
         currentUser = mAuth.currentUser
 
         if(currentUser == null ){
-            startActivity( Intent(this, SplashScreenActivity::class.java) )
+            var intent =  Intent(this, SplashScreenActivity::class.java)
+            startActivity(intent)
+
             finish()
         }
 
@@ -96,8 +100,11 @@ class UnlockActivity : AppCompatActivity() {
 
                 mAuth.signInWithEmailAndPassword(accountEmail, accountPassword).addOnCompleteListener {
                     if(it.isSuccessful){
-                        startActivity(Intent(this, MainActivity::class.java))
+                        var intent =  Intent(this, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
                         Toast.makeText(this, "Welcome back " + currentUser!!.displayName, Toast.LENGTH_SHORT).show()
+                        finish()
                     } else {
                         password_input.error = "Invalid login details provided"
                         Toast.makeText(this, "Login faild, try again", Toast.LENGTH_SHORT).show()
