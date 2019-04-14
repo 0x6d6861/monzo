@@ -21,6 +21,9 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+
+//        TODO: think of the annimations on viewpages slider (refer to paypal andoid app)
+
         val viewPager = findViewById(R.id.viewpager) as ViewPager
         viewPager.adapter = SplashPagerAdapter(this)
 

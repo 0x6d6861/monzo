@@ -6,15 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.StyleSpan
+import android.widget.Toast
 import androidx.biometric.BiometricPrompt
 import co.heri.monzo.MainActivity
 import co.heri.monzo.R
 import co.heri.monzo.utils.BiometricCallbackResponse
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_unlock.*
 import java.util.concurrent.Executors
 
 class UnlockActivity : AppCompatActivity() {
 
+    private lateinit var mAuth: FirebaseAuth
+
+    private var currentUser: FirebaseUser? = null
 
     val executor = Executors.newSingleThreadExecutor()
 
@@ -24,39 +30,88 @@ class UnlockActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_unlock)
 
+        mAuth = FirebaseAuth.getInstance()
+
+        currentUser = mAuth.currentUser
+
+        if(currentUser == null ){
+            startActivity( Intent(this, SplashScreenActivity::class.java) )
+            finish()
+        }
+
 
 
         val sampleString = StringBuilder()
 
         sampleString.append("Login to your account ");
 
-        val account_text = "agape@live.fr"
+        val accountEmail = currentUser!!.email
 
-        sampleString.append(account_text);
+        fullname_text.text = currentUser!!.displayName
+
+        email_text.text = accountEmail
+
+        sampleString.append(accountEmail);
 
         val spannableString = SpannableString(sampleString.toString())
 
-        spannableString.setSpan(StyleSpan(Typeface.BOLD),sampleString.length - account_text.length,sampleString.length,0);
+        if (accountEmail != null) { // TODO:: this should check in the preference if fingerprint auth is activated
+            spannableString.setSpan(
+                StyleSpan(Typeface.BOLD),
+                sampleString.length - accountEmail.length,
+                sampleString.length,
+                0
+            )
 
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Authentication")
-            .setSubtitle(spannableString)
-            .setDescription("Place your finger on the device home button to verify your identity")
-            .setNegativeButtonText("Cancel")
-            .build()
+            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Authentication")
+                .setSubtitle(spannableString)
+                .setDescription("Place your finger on the device home button to verify your identity")
+                .setNegativeButtonText("Cancel")
+                .build()
 
 
-        val biometricPrompt = BiometricPrompt(this@UnlockActivity, executor, BiometricCallbackResponse(this@UnlockActivity))
+            val biometricPrompt = BiometricPrompt(this@UnlockActivity, executor, BiometricCallbackResponse(this@UnlockActivity))
 
 
-        biometricPrompt.authenticate(promptInfo) // prompts the dialog by default
+            biometricPrompt.authenticate(promptInfo) // prompts the dialog by default
 
-        fingerprint_btn.setOnClickListener {
-            biometricPrompt.authenticate(promptInfo)
-        }
+            fingerprint_btn.setOnClickListener {
+                biometricPrompt.authenticate(promptInfo)
+            }
+
+
+        };
 
         proceed_btn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+
+            val accountPassword = password_input.text.toString()
+
+            if(accountPassword.isNullOrEmpty()){
+                password_input.error = "Please confirm your password"
+                return@setOnClickListener
+            }
+
+            if(accountEmail != null){
+
+                mAuth.signInWithEmailAndPassword(accountEmail, accountPassword).addOnCompleteListener {
+                    if(it.isSuccessful){
+                        startActivity(Intent(this, MainActivity::class.java))
+                        Toast.makeText(this, "Welcome back " + currentUser!!.displayName, Toast.LENGTH_SHORT).show()
+                    } else {
+                        password_input.error = "Invalid login details provided"
+                        Toast.makeText(this, "Login faild, try again", Toast.LENGTH_SHORT).show()
+
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "OOps!! Something wrong happened", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
         }
+
+
     }
 }

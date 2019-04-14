@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:id="@+id/email_txt" android:background="@drawable/rounded_corner"
+                    android:id="@+id/email_input" android:background="@drawable/rounded_corner"
                     android:inputType="textEmailAddress" android:hint="Email Address"
             />
         </com.google.android.material.textfield.TextInputLayout>
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
-                    android:id="@+id/password_txt" android:background="@drawable/rounded_corner"
+                    android:id="@+id/password_input" android:background="@drawable/rounded_corner"
                     android:hint="Password"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.button.MaterialButton

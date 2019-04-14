@@ -24,10 +24,17 @@ import co.heri.monzo.dialods.RequestDialog
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.vision.barcode.Barcode
 import android.app.Activity
+import android.widget.TextView
+import co.heri.monzo.Authentication.SplashScreenActivity
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.header_nav.*
 
 
-class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
+class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener {
+
 
     lateinit var daraja: Daraja;
     lateinit var phoneNumber: String;
@@ -36,6 +43,8 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
 
     private lateinit var drawerLayout: DrawerLayout
 
+    private lateinit var mAuth: FirebaseAuth
+    private var currentUser: FirebaseUser? = null
 
 
 
@@ -43,7 +52,18 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        mAuth = FirebaseAuth.getInstance()
+        currentUser = mAuth.currentUser
+
+        if(currentUser == null){
+            startActivity(Intent(this, SplashScreenActivity::class.java))
+            finish()
+        }
+
         setContentView(R.layout.activity_main)
+
+        updateUI(currentUser!!) // Updates the UI with the current useer detaisl
 
         mTopToolbar = findViewById<Toolbar>(R.id.toolbar);
         setSupportActionBar(mTopToolbar);
@@ -59,6 +79,9 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener {
         drawerLayout = findViewById(R.id.drawer_layout)
 
         drawerLayout.addDrawerListener(this@MainActivity)
+
+        var navigationView = findViewById<NavigationView>(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener(this)
 
 
         request_dialog_btn.setOnClickListener {
@@ -244,6 +267,37 @@ fun setNumber(view: View){
                 //Write your code if there's no result
             }
         }
+    }
+
+
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+
+        menuItem.isChecked = true
+
+        when (menuItem.itemId) {
+            R.id.logout -> {
+                mAuth.signOut()
+                startActivity(Intent(this, SplashScreenActivity::class.java))
+                finishAffinity()
+            }
+        }
+
+        drawerLayout.closeDrawers()
+
+        return true
+
+    }
+
+
+    private fun updateUI(loggedInUser: FirebaseUser){
+
+        var headerView = nav_view.getHeaderView(0)
+
+        val drawer_email = headerView.findViewById<TextView>(R.id.drawer_email)
+        val drawer_fullname = headerView.findViewById<TextView>(R.id.drawer_fullname)
+
+        drawer_email.text = loggedInUser.email
+        drawer_fullname.text = loggedInUser.displayName
     }
 
 }

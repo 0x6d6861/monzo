@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
 
-    <TextView
-            android:text="Screen one "
+
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView50"/>
-</LinearLayout>
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="64dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/linearLayout8">
+        <TextView
+                android:text="The simple and more secure way to send and receive payments, and to manage your Monzo account."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView50"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" android:textAlignment="center"
+                android:fontFamily="@font/montserrat_light" android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

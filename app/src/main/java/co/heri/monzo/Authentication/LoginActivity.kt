@@ -10,19 +10,55 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import co.heri.monzo.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var mAuth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        login_btn.setOnClickListener {
-            startActivity(Intent(this, UnlockActivity::class.java))
+        mAuth = FirebaseAuth.getInstance()
 
-//            startModal()
+
+        login_btn.setOnClickListener {
+
+            val accountEmail = email_input.text.toString()
+            val accountPassword = password_input.text.toString()
+
+            if(accountPassword.isNullOrEmpty()){
+                password_input.error = "Please confirm your password"
+                return@setOnClickListener
+            }
+
+            if(accountEmail.isNullOrEmpty()){
+                email_input.error = "Email address is required"
+                return@setOnClickListener
+            }
+
+                mAuth.signInWithEmailAndPassword(accountEmail, accountPassword).addOnCompleteListener {
+                    if(it.isSuccessful){
+                        startActivity(Intent(this, MainActivity::class.java))
+                        Toast.makeText(this, "Welcome back " + mAuth.currentUser!!.displayName, Toast.LENGTH_SHORT).show()
+                    } else {
+                        password_input.error = "Invalid login details provided"
+                        Toast.makeText(this, "Login faild, try again", Toast.LENGTH_SHORT).show()
+
+                    }
+                }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "OOps!! Something wrong happened", Toast.LENGTH_SHORT).show()
+                    }
+
+
 
         }
 

@@ -13,7 +13,20 @@
           "package_name": "co.heri.monzo"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1036771643891-v7sv4rrqelbe7u4551d7otid0pmvt576.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.heri.monzo",
+            "certificate_hash": "7a78d28067a1c581d5eda208c8519627b1f4be3a"
+          }
+        },
+        {
+          "client_id": "1036771643891-mragvufavgt2fb04oita77h2og7d2srs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC3jJQoHdfdFV597O4xMbbg9kRfdcmW2aE"

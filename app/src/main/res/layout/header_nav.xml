@@ -28,11 +28,11 @@
         <TextView
                 android:text="Heri Agape"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView33" android:textSize="18sp"
+                android:layout_height="wrap_content" android:id="@+id/drawer_fullname" android:textSize="18sp"
                 android:textColor="@color/colorPrimary" android:fontFamily="@font/montserrat_semi_bold"/>
         <TextView
                 android:text="agape@live.fr"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView39"/>
+                android:layout_height="wrap_content" android:id="@+id/drawer_email"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
