@@ -35,12 +35,12 @@ class LoginActivity : AppCompatActivity() {
             val accountPassword = password_input.text.toString()
 
             if(accountPassword.isNullOrEmpty()){
-                password_input.error = "Please confirm your password"
+                password_input_layout.error = "Please confirm your password"
                 return@setOnClickListener
             }
 
             if(accountEmail.isNullOrEmpty()){
-                email_input.error = "Email address is required"
+                email_input_layout.error = "Email address is required"
                 return@setOnClickListener
             }
 
@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, "Welcome back " + mAuth.currentUser!!.displayName, Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
-                        password_input.error = "Invalid login details provided"
+                        email_input_layout.error = "Invalid login details provided"
                         Toast.makeText(this, "Login faild, try again", Toast.LENGTH_SHORT).show()
 
                     }
