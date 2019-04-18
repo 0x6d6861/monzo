@@ -2,7 +2,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Personal info" android:icon="@drawable/ic_iconfinder_profile_ecommerce_shop_4177554"
-          app:showAsAction="withText"/>
+          app:showAsAction="withText" android:id="@+id/personal"/>
     <item android:title="Payment methods" android:icon="@drawable/ic_iconfinder_wallet_ecommerce_shop_4177547"
           app:showAsAction="withText"/>
     <item android:title="F.A.Q." android:icon="@drawable/ic_iconfinder_bill_ecommerce_shop_4177564"

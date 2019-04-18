@@ -1,6 +1,5 @@
 package co.heri.monzo.utils.sms;
 
-import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class MpesaMessage(

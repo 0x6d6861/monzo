@@ -156,8 +156,9 @@ class RegisterActivity : AppCompatActivity() {
                 if(it.isSuccessful){
                     val user = mAuth.currentUser
                     val profileUpdates = UserProfileChangeRequest.Builder().setDisplayName(fullname).build()
-                    user!!.updateProfile(profileUpdates)
-                    startActivity(Intent(this, MainActivity::class.java))
+                    user!!.updateProfile(profileUpdates).addOnCompleteListener {
+                        startActivity(Intent(this, MainActivity::class.java))
+                    }
                 } else {
                     Snackbar.make(register_btn, "Registration failed, try later", Snackbar.LENGTH_SHORT).show()
                 }

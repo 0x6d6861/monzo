@@ -27,11 +27,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:noHistory="true"
-                  android:name=".Authentication.RegisterActivity">
+        <activity
+                android:parentActivityName=".MainActivity"
+                android:name=".Authentication.ProfileActivity">
         </activity>
-        <activity android:noHistory="true"
-                  android:name=".Authentication.LoginActivity">
+        <activity
+                android:name=".Authentication.RegisterActivity"
+                android:noHistory="true">
+        </activity>
+        <activity
+                android:name=".Authentication.LoginActivity"
+                android:noHistory="true">
         </activity>
         <activity android:name=".Authentication.SplashScreenActivity">
 
@@ -44,8 +50,8 @@
             -->
         </activity>
         <activity
-                android:noHistory="true"
                 android:name=".ScanActivity"
+                android:noHistory="true"
                 android:screenOrientation="portrait">
         </activity>
 
@@ -54,8 +60,8 @@
                 android:value="barcode"/>
 
         <activity
-                android:noHistory="true"
                 android:name=".EmptyMainActivity"
+                android:noHistory="true"
                 android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -68,8 +74,9 @@
                 android:label="@string/title_activity_transaction"
                 android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:noHistory="true"
-                  android:name=".Authentication.UnlockActivity">
+        <activity
+                android:name=".Authentication.UnlockActivity"
+                android:noHistory="true">
         </activity>
         <activity android:name=".CalendarActivity">
         </activity>

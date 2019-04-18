@@ -25,6 +25,7 @@ import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.vision.barcode.Barcode
 import android.app.Activity
 import android.widget.TextView
+import co.heri.monzo.Authentication.ProfileActivity
 import co.heri.monzo.Authentication.SplashScreenActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -279,6 +280,9 @@ fun setNumber(view: View){
                 mAuth.signOut()
                 startActivity(Intent(this, SplashScreenActivity::class.java))
                 finishAffinity()
+            }
+            R.id.personal -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
             }
         }
 
