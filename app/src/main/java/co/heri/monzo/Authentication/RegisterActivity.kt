@@ -8,10 +8,7 @@ import android.text.TextWatcher
 import co.heri.monzo.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
-import java.util.regex.Pattern
 import android.widget.EditText
-import android.widget.CompoundButton
-import android.widget.RadioGroup
 import co.heri.monzo.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.UserProfileChangeRequest
