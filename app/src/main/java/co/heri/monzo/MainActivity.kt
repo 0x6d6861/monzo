@@ -24,7 +24,9 @@ import co.heri.monzo.dialods.RequestDialog
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.vision.barcode.Barcode
 import android.app.Activity
+import android.view.Gravity
 import android.widget.TextView
+import androidx.appcompat.widget.PopupMenu
 import co.heri.monzo.Authentication.ProfileActivity
 import co.heri.monzo.Authentication.SplashScreenActivity
 import com.google.android.material.navigation.NavigationView
@@ -198,6 +200,19 @@ class MainActivity : AppCompatActivity(), DrawerLayout.DrawerListener, Navigatio
             )
 
         }*/
+
+        more_btn.setOnClickListener {
+            val popup = PopupMenu(this, it, Gravity.END)
+            popup.menuInflater.inflate(R.menu.account_menu, popup.menu)
+
+            popup.setOnMenuItemClickListener { item ->
+                Toast.makeText(this@MainActivity, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
+                true
+            }
+
+            popup.show()
+
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

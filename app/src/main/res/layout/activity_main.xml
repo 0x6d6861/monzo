@@ -122,7 +122,7 @@
                         <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" app:srcCompat="@drawable/twotone_more_vert_24px"
-                                android:id="@+id/imageButton" app:layout_constraintEnd_toEndOf="parent"
+                                android:id="@+id/more_btn" app:layout_constraintEnd_toEndOf="parent"
                                 android:layout_marginEnd="16dp"
                                 app:layout_constraintTop_toTopOf="@+id/textView25"
                                 android:clickable="true"
@@ -139,28 +139,29 @@
                         android:layout_height="match_parent" android:paddingStart="8dp">
                     <com.google.android.material.button.MaterialButton
                             style="@style/Widget.MaterialComponents.Button.Icon"
-                            android:text="Send Money"
+                            android:text="Send "
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/button5"
-                            app:iconSize="32dp" android:layout_margin="8dp"
-                            android:textAllCaps="false" android:paddingBottom="16dp" android:paddingTop="16dp"
-                            app:cornerRadius="8dp"/>
+                            android:layout_height="wrap_content" android:id="@+id/send_money_btn"
+                            app:iconSize="16dp" android:layout_margin="8dp"
+                            android:textAllCaps="false"
+                            app:cornerRadius="8dp" app:icon="@drawable/twotone_call_made_24px"/>
                     <com.google.android.material.button.MaterialButton
-                            android:text="Request money"
+                            android:text="Request "
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" android:id="@+id/request_dialog_btn"
-                            app:iconSize="32dp" android:layout_margin="8dp"
-                            android:textAllCaps="false" android:paddingBottom="16dp" android:paddingTop="16dp"
-                            android:background="@drawable/rounded_button" app:cornerRadius="8dp"/>
+                            app:iconSize="16dp" android:layout_margin="8dp"
+                            android:textAllCaps="false"
+                            app:cornerRadius="8dp"
+                            app:icon="@drawable/twotone_call_received_24px"/>
                     <ImageButton
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_qr_scan"
+                            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_qr"
                             android:id="@+id/scan_btn"
                             style="@style/Widget.AppCompat.ImageButton"
-                            android:paddingBottom="16dp" android:paddingTop="16dp" android:paddingEnd="16dp"
-                            android:paddingStart="16dp" android:layout_margin="8dp"
-                            android:layout_gravity="center"/>
+                            android:layout_margin="8dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"/>
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
