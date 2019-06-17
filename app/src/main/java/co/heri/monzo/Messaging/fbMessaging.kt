@@ -12,12 +12,14 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import co.heri.monzo.MainActivity
 import co.heri.monzo.R
+import com.google.firebase.messaging.FirebaseMessaging
 
 
-class FirebaseMessaging: FirebaseMessagingService() {
+class fbMessaging: FirebaseMessagingService() {
     private val TAG = "FCM Service"
 
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
@@ -36,6 +38,17 @@ class FirebaseMessaging: FirebaseMessagingService() {
         super.onNewToken(newToken)
         // TODO: do something with this token
         Log.e("newToken",newToken);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("notifications")
+            .addOnCompleteListener { task ->
+                /*var msg = getString(R.string.msg_subscribed)
+                if (!task.isSuccessful) {
+                    msg = getString(R.string.msg_subscribe_failed)
+                }
+                Log.d(TAG, msg)*/
+                Toast.makeText(baseContext, "Subscribed", Toast.LENGTH_SHORT).show()
+            }
+
         this.sendRegistrationToServer(newToken);
 
     }
