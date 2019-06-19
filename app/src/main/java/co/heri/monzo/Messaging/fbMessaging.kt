@@ -17,6 +17,9 @@ import androidx.core.app.NotificationCompat
 import co.heri.monzo.MainActivity
 import co.heri.monzo.R
 import com.google.firebase.messaging.FirebaseMessaging
+import android.graphics.BitmapFactory
+
+
 
 
 class fbMessaging: FirebaseMessagingService() {
@@ -81,8 +84,8 @@ class fbMessaging: FirebaseMessagingService() {
             notificationChannel.description = "Description"
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
-            notificationChannel.vibrationPattern = longArrayOf(0, 1000, 500, 1000)
-            notificationChannel.enableVibration(true)
+//            notificationChannel.vibrationPattern = longArrayOf(0, 1000, 500, 1000)
+//            notificationChannel.enableVibration(true)
             notificationManager.createNotificationChannel(notificationChannel)
         }
 
@@ -92,10 +95,14 @@ class fbMessaging: FirebaseMessagingService() {
             channel.canBypassDnd()
         }
 
+        val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.elon)
+
+
         val notificationBuilder = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-            .setSmallIcon(R.drawable.twotone_notifications_24px)
+            .setSmallIcon(R.drawable.ic_twotone_account_balance_wallet_16px)
             .setContentTitle(title)
             .setContentText(message)
+            .setLargeIcon(largeIcon)
             .setAutoCancel(true)
             .setSound(soundUri)
             .setContentIntent(pendingIntent)
